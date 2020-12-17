@@ -18,22 +18,16 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 
 
-class MovieAdapter( val context: Context,var list: List<SearchX> = ArrayList()) :
+class MovieAdapter( val context: Context) :
         RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+    var list: List<SearchX> = ArrayList()
 
-
-    private  lateinit var iv_movie_poster: ImageView
-    private lateinit var movie_title: TextView
-    private lateinit var  movie_rated: TextView
-    private lateinit var movie_release_date: TextView
-    private lateinit var movie_rating: TextView
-    private lateinit var movie_runtime: TextView
-    private lateinit var  movie_overview: TextView
 
     fun setMovieList(list: List<SearchX>){
         this.list = list
@@ -44,14 +38,16 @@ class MovieAdapter( val context: Context,var list: List<SearchX> = ArrayList()) 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        ///holder.movieTitle.text = list[position].title
-       // holder.iv_movie_poster = list[position].poster
-       // holder.movie_rated.text=list[position].type
-       // holder.movie_release_date.text=list[position].year
+        holder.movieTitle.text = list[position].title
+        Picasso.get().load(list[position].poster).into(holder.iv_movie_poster)
+       holder.movie_release_date.text=list[position].year
         holder.childView.setOnClickListener {
             Log.d("info", "message")
             val intent = Intent(context, DetailsActivity::class.java)
-            //intent.putExtra("name", list[position].title)
+            intent.putExtra("image", list[position].poster)
+            intent.putExtra("nameMovie", list[position].title)
+            intent.putExtra("yearRelease",list[position].year)
+
             context.startActivity(intent)
         }
 
@@ -71,14 +67,12 @@ class MovieAdapter( val context: Context,var list: List<SearchX> = ArrayList()) 
 
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-       // var iv_movie_poster=v.findViewById<ImageView>(R.id.iv_movie_poster)
+       val iv_movie_poster=v.findViewById<ImageView>(R.id.iv_movie_poster)
         val movieTitle=v.findViewById<TextView>(R.id.movie_title)
-        val movie_rated=v.findViewById<TextView>(R.id.movie_rated)
+
         val movie_release_date=v.findViewById<TextView>(R.id.movie_release_date)
-       val movie_rating=v.findViewById<TextView>(R.id.movie_rating)
-      val  movie_runtime=v.findViewById<TextView>(R.id.movie_runtime)
-       val movie_overview=v.findViewById<TextView>(R.id.movie_overview)
-        var childView=v.findViewById<CardView>(R.id.childView)
+
+        var childView=v.findViewById<CardView>(R.id.child)
        // val listView=v.findViewById<LinearLayout>(R.id.listView)
     }
 

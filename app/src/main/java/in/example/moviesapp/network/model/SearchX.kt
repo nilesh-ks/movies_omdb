@@ -1,7 +1,6 @@
 package `in`.example.moviesapp.network.model
 
 
-import android.widget.ImageView
 import com.google.gson.annotations.SerializedName
 
 data class SearchX(

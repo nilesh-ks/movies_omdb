@@ -6,6 +6,8 @@ import `in`.example.moviesapp.viewModel.SearchActivityViewModel
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
@@ -15,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SearchActivity : AppCompatActivity() {
     lateinit var search_progress: ProgressBar
-    lateinit var et_search: AppCompatEditText
-    lateinit var iv_search: AppCompatImageView
+    lateinit var et_search: EditText
+    lateinit var iv_search: ImageView
     private lateinit var adapter:MovieAdapter
     private lateinit var  viewModel: SearchActivityViewModel
     private lateinit var rv_Search: RecyclerView

@@ -10,22 +10,38 @@
     <RelativeLayout
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_search"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/iv_search"
-            android:layout_toLeftOf="@+id/iv_search"
-            android:hint="Search movies, TV shows and more"
-            android:maxLines="1"
-            android:textColor="@android:color/white"
-            android:textColorHint="#80FFFFFF"
-            app:backgroundTint="@android:color/white" />
+            android:id="@+id/toolbar"
+            android:background="@color/white">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Movies"
+                android:textColor="#7787C4"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="36sp"
+                android:fontFamily="@font/rockwen"/>
+        </androidx.appcompat.widget.Toolbar>
 
-        <androidx.appcompat.widget.AppCompatImageView
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_below="@+id/toolbar"
+            android:layout_width="350dp"
+            android:layout_marginStart="15dp"
+            android:drawableStart="@drawable/ic_movie"
+            android:layout_height="48dp"
+            android:background="@drawable/text_box"
+            android:hint="  Search movies, TV shows and more"
+            android:maxLines="1"
+            android:textColor="@android:color/darker_gray" />
+
+        <ImageView
+            android:layout_below="@+id/toolbar"
             android:id="@+id/iv_search"
             android:layout_width="48dp"
             android:layout_height="48dp"
